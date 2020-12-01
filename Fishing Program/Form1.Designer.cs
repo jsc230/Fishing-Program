@@ -53,7 +53,10 @@
             this.waterFlowTextBox = new System.Windows.Forms.TextBox();
             this.gageHeightTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.getCurrentStreamConditionsButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
             this.openSearchbutton = new System.Windows.Forms.Button();
@@ -183,9 +186,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.weatherComboBox);
-            this.groupBox1.Location = new System.Drawing.Point(50, 109);
+            this.groupBox1.Location = new System.Drawing.Point(48, 109);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 252);
+            this.groupBox1.Size = new System.Drawing.Size(616, 251);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Weather Data";
@@ -200,7 +203,7 @@
             // 
             // barometerTextBox
             // 
-            this.barometerTextBox.Location = new System.Drawing.Point(137, 151);
+            this.barometerTextBox.Location = new System.Drawing.Point(136, 152);
             this.barometerTextBox.Name = "barometerTextBox";
             this.barometerTextBox.Size = new System.Drawing.Size(152, 20);
             this.barometerTextBox.TabIndex = 10;
@@ -273,6 +276,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.getCurrentStreamConditionsButton);
             this.groupBox2.Controls.Add(this.gageHeightTextBox);
             this.groupBox2.Controls.Add(this.waterFlowTextBox);
             this.groupBox2.Controls.Add(this.label11);
@@ -281,25 +285,54 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.waterClarityComboBox);
-            this.groupBox2.Location = new System.Drawing.Point(50, 379);
+            this.groupBox2.Location = new System.Drawing.Point(48, 376);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(314, 239);
+            this.groupBox2.Size = new System.Drawing.Size(616, 248);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Water Data";
             // 
+            // getCurrentStreamConditionsButton
+            // 
+            this.getCurrentStreamConditionsButton.Location = new System.Drawing.Point(312, 152);
+            this.getCurrentStreamConditionsButton.Name = "getCurrentStreamConditionsButton";
+            this.getCurrentStreamConditionsButton.Size = new System.Drawing.Size(120, 40);
+            this.getCurrentStreamConditionsButton.TabIndex = 20;
+            this.getCurrentStreamConditionsButton.Text = "Get Current Stream Conditions";
+            this.getCurrentStreamConditionsButton.UseVisualStyleBackColor = true;
+            this.getCurrentStreamConditionsButton.Click += new System.EventHandler(this.getCurrentStreamConditionsButton_Click);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.locationComboBox);
+            this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.lengthTextBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.fishTypeComboBox);
-            this.groupBox3.Location = new System.Drawing.Point(50, 646);
+            this.groupBox3.Location = new System.Drawing.Point(48, 640);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(315, 132);
+            this.groupBox3.Size = new System.Drawing.Size(616, 138);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fish Data";
+            // 
+            // locationComboBox
+            // 
+            this.locationComboBox.FormattingEnabled = true;
+            this.locationComboBox.Location = new System.Drawing.Point(405, 33);
+            this.locationComboBox.Name = "locationComboBox";
+            this.locationComboBox.Size = new System.Drawing.Size(131, 21);
+            this.locationComboBox.TabIndex = 11;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(332, 41);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Location";
             // 
             // label12
             // 
@@ -334,7 +367,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 872);
+            this.ClientSize = new System.Drawing.Size(719, 872);
             this.Controls.Add(this.openSearchbutton);
             this.Controls.Add(this.dateTimePickerTime);
             this.Controls.Add(this.label12);
@@ -389,6 +422,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dateTimePickerTime;
         private System.Windows.Forms.Button openSearchbutton;
+        private System.Windows.Forms.ComboBox locationComboBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button getCurrentStreamConditionsButton;
     }
 }
 

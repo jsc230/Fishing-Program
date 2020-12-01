@@ -20,8 +20,9 @@ namespace Fishing_Program
         public string gageHeight { get; set; }
         public string fishType { get; set; }
         public string length { get; set; }
+        public string location { get; set; }
 
-        public Fish(string date, string time, string weather, string temperature, string barometer, string moonPhase, string waterClarity, string waterTemperature, string waterFlow, string gageHeight, string fishType, string length)
+        public Fish(string date, string time, string weather, string temperature, string barometer, string moonPhase, string waterClarity, string waterTemperature, string waterFlow, string gageHeight, string fishType, string length, string location)
         {
             this.date = date;
             this.time = time;
@@ -35,6 +36,7 @@ namespace Fishing_Program
             this.gageHeight = gageHeight;
             this.fishType = fishType;
             this.length = length;
+            this.location = location;
         }
 
         public Fish()

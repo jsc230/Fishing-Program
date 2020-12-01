@@ -18,6 +18,7 @@ namespace Fishing_Program
         List<string> fishTypesList = new List<string>();
         List<string> waterClarityList = new List<string>();
         List<string> moonPhasesList = new List<string>();
+        List<string> locationList = new List<string>();
                 
 
         string weather;
@@ -32,6 +33,7 @@ namespace Fishing_Program
         string waterFlow;
         string gageHeight;
         string moonPhase;
+        string location;
 
         public Form1()
         {
@@ -40,6 +42,7 @@ namespace Fishing_Program
             getFishType();
             getWaterClarity();
             getMoonPhases();
+            getLocation();
 
             //Fill ComboBoxes
             for(int i = 0; i < weatherTypesList.Count; i++)
@@ -58,6 +61,10 @@ namespace Fishing_Program
             {
                 moonPhaseComboBox.Items.Add(moonPhasesList[i]);
             }
+            for(int i = 0; i < locationList.Count; i++)
+            {
+                locationComboBox.Items.Add(locationList[i]);
+            }
         }
 
         private void recordButton_Click(object sender, EventArgs e)
@@ -74,11 +81,12 @@ namespace Fishing_Program
             waterFlow = waterFlowTextBox.Text;
             gageHeight = gageHeightTextBox.Text;
             time = dateTimePickerTime.Value.ToString("HH:mm");
+            location = this.locationComboBox.GetItemText(this.locationComboBox.SelectedItem);
 
 
             using (StreamWriter sw = File.AppendText("fishdata.data"))
             {
-                sw.WriteLine(date + "," + time + "," + weather + "," + temperature + "," + barometer + "," + moonPhase + "," + waterClarity + "," + waterTemperature + "," + waterFlow + "," + gageHeight + "," + fishType + "," + fishLength);
+                sw.WriteLine(date + "," + time + "," + weather + "," + temperature + "," + barometer + "," + moonPhase + "," + waterClarity + "," + waterTemperature + "," + waterFlow + "," + gageHeight + "," + fishType + "," + fishLength + "," + location);
             }
 
             MessageBox.Show("Recorded");
@@ -177,12 +185,45 @@ namespace Fishing_Program
             }
         }
 
-              
+           //TODO: add lure type
+        private void getLocation()
+        {
+            string line;
+
+            try
+            {
+                System.IO.StreamReader file = new System.IO.StreamReader("location.txt");
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    locationList.Add(line);
+                }
+                file.Close();
+            }
+            catch (Exception e)
+            {
+                string message = "location.txt is empty.";
+                string caption = "File Empty";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons);
+            }
+        }  
 
         private void openSearchbutton_Click(object sender, EventArgs e)
         {
             SearchForm sf = new SearchForm();
             sf.ShowDialog();
+        }
+
+        private void getCurrentStreamConditionsButton_Click(object sender, EventArgs e)
+        {
+            GetStreamConditionsForm gcscf = new GetStreamConditionsForm();
+            gcscf.ShowDialog();
+            if(gcscf.flowInfo != null && gcscf.gageInfo != null)
+            {
+                this.gageHeightTextBox.Text = gcscf.gageInfo;
+                this.waterFlowTextBox.Text = gcscf.flowInfo;
+            }
         }
     }
 }

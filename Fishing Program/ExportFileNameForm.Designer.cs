@@ -68,6 +68,8 @@ namespace Fishing_Program
             this.Controls.Add(this.exportOKButton);
             this.Controls.Add(this.fileNameTextBox);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "exportFileNameForm";
             this.Text = "Export File Name";
             this.ResumeLayout(false);
