@@ -60,6 +60,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
             this.openSearchbutton = new System.Windows.Forms.Button();
+            this.dataAnalysisButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -168,9 +169,9 @@
             // 
             // recordButton
             // 
-            this.recordButton.Location = new System.Drawing.Point(50, 804);
+            this.recordButton.Location = new System.Drawing.Point(48, 800);
             this.recordButton.Name = "recordButton";
-            this.recordButton.Size = new System.Drawing.Size(126, 41);
+            this.recordButton.Size = new System.Drawing.Size(128, 40);
             this.recordButton.TabIndex = 12;
             this.recordButton.Text = "Record";
             this.recordButton.UseVisualStyleBackColor = true;
@@ -355,19 +356,30 @@
             // 
             // openSearchbutton
             // 
-            this.openSearchbutton.Location = new System.Drawing.Point(248, 805);
+            this.openSearchbutton.Location = new System.Drawing.Point(240, 800);
             this.openSearchbutton.Name = "openSearchbutton";
-            this.openSearchbutton.Size = new System.Drawing.Size(115, 39);
+            this.openSearchbutton.Size = new System.Drawing.Size(128, 40);
             this.openSearchbutton.TabIndex = 25;
             this.openSearchbutton.Text = "Open Search";
             this.openSearchbutton.UseVisualStyleBackColor = true;
             this.openSearchbutton.Click += new System.EventHandler(this.openSearchbutton_Click);
+            // 
+            // dataAnalysisButton
+            // 
+            this.dataAnalysisButton.Location = new System.Drawing.Point(424, 800);
+            this.dataAnalysisButton.Name = "dataAnalysisButton";
+            this.dataAnalysisButton.Size = new System.Drawing.Size(128, 40);
+            this.dataAnalysisButton.TabIndex = 26;
+            this.dataAnalysisButton.Text = "Data Analysis";
+            this.dataAnalysisButton.UseVisualStyleBackColor = true;
+            this.dataAnalysisButton.Click += new System.EventHandler(this.dataAnalysisButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 872);
+            this.Controls.Add(this.dataAnalysisButton);
             this.Controls.Add(this.openSearchbutton);
             this.Controls.Add(this.dateTimePickerTime);
             this.Controls.Add(this.label12);
@@ -425,6 +437,7 @@
         private System.Windows.Forms.ComboBox locationComboBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button getCurrentStreamConditionsButton;
+        private System.Windows.Forms.Button dataAnalysisButton;
     }
 }
 

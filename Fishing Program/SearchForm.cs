@@ -20,7 +20,9 @@ namespace Fishing_Program
         public SearchForm()
         {
             InitializeComponent();
-            getFishType();
+
+            //get the lists that will fill the comboboxes
+            fishTypesList = Utility.getListData("fishtype.txt");
 
             //fill comboboxes
             for(int i = 0; i < fishTypesList.Count; i++)
@@ -81,29 +83,7 @@ namespace Fishing_Program
             };
         }
 
-        private void getFishType()
-        {
-            string line;
-
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("fishtype.txt");
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    fishTypesList.Add(line);
-                }
-                file.Close();
-            }
-            catch (Exception e)
-            {
-                string message = "fishtype.txt is empty.";
-                string caption = "File Empty";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-        }
-
+       
         private void exportCSVButton_Click(object sender, EventArgs e)
         {
             exportFileNameForm efnf = new exportFileNameForm();

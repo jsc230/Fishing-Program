@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Fishing_Program
 {
     public partial class Form1 : Form
@@ -38,11 +39,14 @@ namespace Fishing_Program
         public Form1()
         {
             InitializeComponent();
-            getWeather();
-            getFishType();
-            getWaterClarity();
-            getMoonPhases();
-            getLocation();
+            
+            //get the lists that will fill the combo boxes
+            //todo: add lure type
+            weatherTypesList = Utility.getListData("weather.txt");
+            fishTypesList = Utility.getListData("fishtype.txt");
+            waterClarityList = Utility.getListData("waterclarity.txt");
+            moonPhasesList = Utility.getListData("moonphases.txt");
+            locationList = Utility.getListData("location.txt");
 
             //Fill ComboBoxes
             for(int i = 0; i < weatherTypesList.Count; i++)
@@ -91,123 +95,7 @@ namespace Fishing_Program
 
             MessageBox.Show("Recorded");
 
-        }
-
-        private void getWeather()
-        {
-            string line;
-            
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("weather.txt");
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    weatherTypesList.Add(line);
-                }
-                file.Close();
-            }
-            catch(Exception e)
-            {
-                string message = "weather.txt is empty.";
-                string caption = "File Empty";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }            
-        }
-
-        private void getFishType()
-        {
-            string line;
-
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("fishtype.txt");
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    fishTypesList.Add(line);
-                }
-                file.Close();
-            }
-            catch (Exception e)
-            {
-                string message = "fishtype.txt is empty.";
-                string caption = "File Empty";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-        }
-
-        private void getWaterClarity()
-        {
-            string line;
-
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("waterclarity.txt");
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    waterClarityList.Add(line);
-                }
-                file.Close();
-            }
-            catch (Exception e)
-            {
-                string message = "waterclarity.txt is empty.";
-                string caption = "File Empty";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-        }
-
-        private void getMoonPhases()
-        {
-            string line;
-
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("moonphases.txt");
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    moonPhasesList.Add(line);
-                }
-                file.Close();
-            }
-            catch (Exception e)
-            {
-                string message = "moonphases.txt is empty.";
-                string caption = "File Empty";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-        }
-
-           //TODO: add lure type
-        private void getLocation()
-        {
-            string line;
-
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("location.txt");
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    locationList.Add(line);
-                }
-                file.Close();
-            }
-            catch (Exception e)
-            {
-                string message = "location.txt is empty.";
-                string caption = "File Empty";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-        }  
+        }       
 
         private void openSearchbutton_Click(object sender, EventArgs e)
         {
@@ -224,6 +112,12 @@ namespace Fishing_Program
                 this.gageHeightTextBox.Text = gcscf.gageInfo;
                 this.waterFlowTextBox.Text = gcscf.flowInfo;
             }
+        }
+
+        private void dataAnalysisButton_Click(object sender, EventArgs e)
+        {
+            DataAnalysisForm daf = new DataAnalysisForm();
+            daf.ShowDialog();
         }
     }
 }
