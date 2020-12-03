@@ -61,6 +61,8 @@ namespace Fishing_Program
             string line;
             Fish fish;
             string searchType = this.fishTypeComboBox.GetItemText(this.fishTypeComboBox.SelectedItem);
+            int dataType = this.dataTypesComboBox.SelectedIndex;
+            var dataSet = new List<(int, string)>(); //tuple list
 
             fishSearchResultList.Clear();
             searchsb.Clear();
@@ -75,6 +77,107 @@ namespace Fishing_Program
                 {
                     fishSearchResultList.Add(fish);
                 }
+            }
+
+            switch (dataType)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    dataSet = countWeather(fishSearchResultList);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    dataSet = countMoonPhases(fishSearchResultList);
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                default:
+                    MessageBox.Show("Select a data type.");
+                    break;
+            }
+
+            fillChart(dataSet);
+
+        }
+
+        private List<(int, string)> countMoonPhases(List<Fish> fishList)
+        {
+            List<string> Phases = Utility.getListData("moonphases.txt");
+            var result = (0, "a");
+            var results = new List<(int, string)>();
+            int[] count = new int[Phases.Count + 1];
+            
+
+            for (int i = 0; i < fishList.Count; i++)
+            {
+                for (int j = 0; j < Phases.Count; j++)
+                {
+                    if (fishList[i].moonPhase == Phases[j])
+                    {
+                        count[j]++;
+                    }
+                }
+            }
+
+            for(int i = 0; i < Phases.Count; i++)
+            {
+                result = (count[i], Phases[i]);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+        private List<(int, string)> countWeather(List<Fish> fishList)
+        {
+            List<string> Weather = Utility.getListData("weather.txt");
+            var result = (0, "a");
+            var results = new List<(int, string)>();
+            int[] count = new int[Weather.Count + 1];
+
+            for(int i = 0; i < fishList.Count; i++)
+            {
+                for(int j = 0; j < Weather.Count; j++)
+                {
+                    if(fishList[i].weather == Weather[j])
+                    {
+                        count[j]++;
+                    }
+                }
+            }
+
+            for(int i = 0; i < Weather.Count; i++)
+            {
+                result = (count[i], Weather[i]);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+        private void fillChart(List<(int, string)> dataSet)
+        {
+            for (int i = 0; i < dataSet.Count; i++)
+            {
+                chart1.Series["Series"].Points.AddXY(dataSet[i].Item2, dataSet[i].Item1);
             }
         }
     }
