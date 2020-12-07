@@ -36,23 +36,6 @@ namespace Fishing_Program
 
         }
 
-        public static List<(int, string)> countForAnalysis(List<Fish> fishList, string file)
-        {
-            List<string> dataList = getListData(file);
-            var result = (0, "");
-            var results = new List<(int, string)>();
-            int[] count = new int[dataList.Count + 1];
-            string type = "weather";
-
-            for(int i = 0; i < fishList.Count; i++)
-            {
-                for(int j = 0; j < dataList.Count; j++)
-                {
-                    if (fishList[i].type);
-                }
-            }
-
-            return results;
-        }
+        
     }
 }

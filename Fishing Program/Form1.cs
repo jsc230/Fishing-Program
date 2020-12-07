@@ -38,6 +38,7 @@ namespace Fishing_Program
 
         public Form1()
         {
+            
             InitializeComponent();
             
             //get the lists that will fill the combo boxes
@@ -69,6 +70,8 @@ namespace Fishing_Program
             {
                 locationComboBox.Items.Add(locationList[i]);
             }
+
+                      
         }
 
         private void recordButton_Click(object sender, EventArgs e)
@@ -111,6 +114,7 @@ namespace Fishing_Program
             {
                 this.gageHeightTextBox.Text = gcscf.gageInfo;
                 this.waterFlowTextBox.Text = gcscf.flowInfo;
+                this.gageLocationTextBox.Text = gcscf.gageLocation;
             }
         }
 
@@ -119,5 +123,6 @@ namespace Fishing_Program
             DataAnalysisForm daf = new DataAnalysisForm();
             daf.ShowDialog();
         }
+
     }
 }

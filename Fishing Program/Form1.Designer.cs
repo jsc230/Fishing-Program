@@ -61,6 +61,8 @@
             this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
             this.openSearchbutton = new System.Windows.Forms.Button();
             this.dataAnalysisButton = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.gageLocationTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -277,6 +279,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.gageLocationTextBox);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.getCurrentStreamConditionsButton);
             this.groupBox2.Controls.Add(this.gageHeightTextBox);
             this.groupBox2.Controls.Add(this.waterFlowTextBox);
@@ -295,7 +299,7 @@
             // 
             // getCurrentStreamConditionsButton
             // 
-            this.getCurrentStreamConditionsButton.Location = new System.Drawing.Point(312, 152);
+            this.getCurrentStreamConditionsButton.Location = new System.Drawing.Point(312, 128);
             this.getCurrentStreamConditionsButton.Name = "getCurrentStreamConditionsButton";
             this.getCurrentStreamConditionsButton.Size = new System.Drawing.Size(120, 40);
             this.getCurrentStreamConditionsButton.TabIndex = 20;
@@ -374,6 +378,22 @@
             this.dataAnalysisButton.UseVisualStyleBackColor = true;
             this.dataAnalysisButton.Click += new System.EventHandler(this.dataAnalysisButton_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(312, 192);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 13);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Gage Location";
+            // 
+            // gageLocationTextBox
+            // 
+            this.gageLocationTextBox.Location = new System.Drawing.Point(408, 184);
+            this.gageLocationTextBox.Name = "gageLocationTextBox";
+            this.gageLocationTextBox.Size = new System.Drawing.Size(128, 20);
+            this.gageLocationTextBox.TabIndex = 22;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +458,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button getCurrentStreamConditionsButton;
         private System.Windows.Forms.Button dataAnalysisButton;
+        private System.Windows.Forms.TextBox gageLocationTextBox;
+        private System.Windows.Forms.Label label14;
     }
 }
 

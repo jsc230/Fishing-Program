@@ -21,6 +21,7 @@ namespace Fishing_Program
         public string[] stationName;
         public string flowInfo;
         public string gageInfo;
+        public string gageLocation;
 
         List<string> gagesList = new List<string>();
         public GetStreamConditionsForm()
@@ -100,8 +101,11 @@ namespace Fishing_Program
 
         private void applyAndCloseButton_Click(object sender, EventArgs e)
         {
+            string[] stationName;
             gageInfo = gageTextBox.Text;
             flowInfo = flowTextBox.Text;
+            stationName = this.gageLocationComboBox.GetItemText(this.gageLocationComboBox.SelectedItem).Split('-');
+            gageLocation = stationName[0];
             this.Close();
         }
     }

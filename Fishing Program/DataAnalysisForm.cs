@@ -63,6 +63,7 @@ namespace Fishing_Program
             string searchType = this.fishTypeComboBox.GetItemText(this.fishTypeComboBox.SelectedItem);
             int dataType = this.dataTypesComboBox.SelectedIndex;
             var dataSet = new List<(int, string)>(); //tuple list
+            dataSet.Clear();
 
             fishSearchResultList.Clear();
             searchsb.Clear();
@@ -89,6 +90,7 @@ namespace Fishing_Program
                     dataSet = countWeather(fishSearchResultList);
                     break;
                 case 3:
+                    dataSet = countTemperature(fishSearchResultList);
                     break;
                 case 4:
                     break;
@@ -96,10 +98,13 @@ namespace Fishing_Program
                     dataSet = countMoonPhases(fishSearchResultList);
                     break;
                 case 6:
+                    dataSet = countWaterClarity(fishSearchResultList);
                     break;
                 case 7:
+                    dataSet = countWaterTemperature(fishSearchResultList);
                     break;
                 case 8:
+                    //dataSet = countWaterFlow(fishSearchResultList);
                     break;
                 case 9:
                     break;
@@ -173,12 +178,125 @@ namespace Fishing_Program
             return results;
         }
 
+        private List<(int, string)> countWaterClarity(List<Fish> fishList)
+        {
+            List<string> WaterClarity = Utility.getListData("waterclarity.txt");
+            var result = (0, "a");
+            var results = new List<(int, string)>();
+            int[] count = new int[WaterClarity.Count + 1];
+
+            for (int i = 0; i < fishList.Count; i++)
+            {
+                for (int j = 0; j < WaterClarity.Count; j++)
+                {
+                    if (fishList[i].waterClarity == WaterClarity[j])
+                    {
+                        count[j]++;
+                    }
+                }
+            }
+
+            for (int i = 0; i < WaterClarity.Count; i++)
+            {
+                result = (count[i], WaterClarity[i]);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+        
+        private List<(int, string)> countTemperature(List<Fish> fishList)
+        {
+            var result = (0, "a");
+            var results = new List<(int, string)>();
+            var temperaturesList = new List<int>();
+            int roundedNum;
+
+
+            for (int i = 0; i < 20; i++)
+            {
+                temperaturesList.Add(i * 5);
+            }
+
+            int[] count = new int[temperaturesList.Count + 1];
+
+            for(int i = 0; i < fishList.Count; i++)
+            {
+                roundedNum = (int)(Math.Round(Int32.Parse(fishList[i].temperature) / 5.0) * 5);
+
+                for(int j = 0; j < temperaturesList.Count; j++)
+                {
+                    if(roundedNum == temperaturesList[j])
+                    {
+                        count[j]++;
+                    }
+                }
+            }
+
+            for(int i = 0; i < temperaturesList.Count; i++)
+            {
+                result = (count[i], temperaturesList[i].ToString());
+                results.Add(result);
+            }
+                       
+
+            return results;
+        }
+
+        private List<(int, string)> countWaterTemperature(List<Fish> fishList)
+        {
+            var result = (0, "a");
+            var results = new List<(int, string)>();
+            var waterTemperaturesList = new List<int>();
+            int roundedNum;
+
+
+            for (int i = 0; i < 20; i++)
+            {
+                waterTemperaturesList.Add(i * 5);
+            }
+
+            int[] count = new int[waterTemperaturesList.Count + 1];
+
+            for (int i = 0; i < fishList.Count; i++)
+            {
+                roundedNum = (int)(Math.Round(Int32.Parse(fishList[i].waterTemperature) / 5.0) * 5);
+
+                for (int j = 0; j < waterTemperaturesList.Count; j++)
+                {
+                    if (roundedNum == waterTemperaturesList[j])
+                    {
+                        count[j]++;
+                    }
+                }
+            }
+
+            for (int i = 0; i < waterTemperaturesList.Count; i++)
+            {
+                result = (count[i], waterTemperaturesList[i].ToString());
+                results.Add(result);
+            }
+
+
+            return results;
+        }
+
+        //for now we will just take all flows
+        //Todo: later add combobox to select the appropriate gage for where the fish was caught
+        /*private List<(int, string)> countWaterFlow(List<Fish> fishList)
+        {
+
+        }*/
+
         private void fillChart(List<(int, string)> dataSet)
         {
+            chart1.Series["Series"].Points.Clear();
             for (int i = 0; i < dataSet.Count; i++)
             {
                 chart1.Series["Series"].Points.AddXY(dataSet[i].Item2, dataSet[i].Item1);
             }
+            
         }
     }
 }
