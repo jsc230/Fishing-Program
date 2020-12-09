@@ -53,6 +53,8 @@
             this.waterFlowTextBox = new System.Windows.Forms.TextBox();
             this.gageHeightTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gageLocationTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.getCurrentStreamConditionsButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
@@ -61,11 +63,15 @@
             this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
             this.openSearchbutton = new System.Windows.Forms.Button();
             this.dataAnalysisButton = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.gageLocationTextBox = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimePicker
@@ -77,6 +83,7 @@
             // 
             // fishTypeComboBox
             // 
+            this.fishTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fishTypeComboBox.FormattingEnabled = true;
             this.fishTypeComboBox.Location = new System.Drawing.Point(135, 33);
             this.fishTypeComboBox.Name = "fishTypeComboBox";
@@ -105,6 +112,8 @@
             // 
             // weatherComboBox
             // 
+            this.weatherComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.weatherComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weatherComboBox.FormattingEnabled = true;
             this.weatherComboBox.Location = new System.Drawing.Point(137, 43);
             this.weatherComboBox.Name = "weatherComboBox";
@@ -154,6 +163,7 @@
             // 
             // waterClarityComboBox
             // 
+            this.waterClarityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.waterClarityComboBox.FormattingEnabled = true;
             this.waterClarityComboBox.Location = new System.Drawing.Point(137, 30);
             this.waterClarityComboBox.Name = "waterClarityComboBox";
@@ -198,6 +208,7 @@
             // 
             // moonPhaseComboBox
             // 
+            this.moonPhaseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.moonPhaseComboBox.FormattingEnabled = true;
             this.moonPhaseComboBox.Location = new System.Drawing.Point(137, 205);
             this.moonPhaseComboBox.Name = "moonPhaseComboBox";
@@ -297,6 +308,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Water Data";
             // 
+            // gageLocationTextBox
+            // 
+            this.gageLocationTextBox.Location = new System.Drawing.Point(408, 184);
+            this.gageLocationTextBox.Name = "gageLocationTextBox";
+            this.gageLocationTextBox.Size = new System.Drawing.Size(128, 20);
+            this.gageLocationTextBox.TabIndex = 22;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(312, 192);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 13);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Gage Location";
+            // 
             // getCurrentStreamConditionsButton
             // 
             this.getCurrentStreamConditionsButton.Location = new System.Drawing.Point(312, 128);
@@ -324,6 +351,7 @@
             // 
             // locationComboBox
             // 
+            this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
             this.locationComboBox.Location = new System.Drawing.Point(405, 33);
             this.locationComboBox.Name = "locationComboBox";
@@ -378,21 +406,46 @@
             this.dataAnalysisButton.UseVisualStyleBackColor = true;
             this.dataAnalysisButton.Click += new System.EventHandler(this.dataAnalysisButton_Click);
             // 
-            // label14
+            // menuStrip1
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(312, 192);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(77, 13);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Gage Location";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(719, 24);
+            this.menuStrip1.TabIndex = 27;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // gageLocationTextBox
+            // fileToolStripMenuItem
             // 
-            this.gageLocationTextBox.Location = new System.Drawing.Point(408, 184);
-            this.gageLocationTextBox.Name = "gageLocationTextBox";
-            this.gageLocationTextBox.Size = new System.Drawing.Size(128, 20);
-            this.gageLocationTextBox.TabIndex = 22;
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openSearchToolStripMenuItem,
+            this.dataAnalysisToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openSearchToolStripMenuItem
+            // 
+            this.openSearchToolStripMenuItem.Name = "openSearchToolStripMenuItem";
+            this.openSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openSearchToolStripMenuItem.Text = "&Open Search";
+            this.openSearchToolStripMenuItem.Click += new System.EventHandler(this.openSearchToolStripMenuItem_Click);
+            // 
+            // dataAnalysisToolStripMenuItem
+            // 
+            this.dataAnalysisToolStripMenuItem.Name = "dataAnalysisToolStripMenuItem";
+            this.dataAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dataAnalysisToolStripMenuItem.Text = "&Data Analysis";
+            this.dataAnalysisToolStripMenuItem.Click += new System.EventHandler(this.dataAnalysisToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -409,6 +462,8 @@
             this.Controls.Add(this.recordButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Fish Program";
@@ -418,6 +473,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,6 +517,11 @@
         private System.Windows.Forms.Button dataAnalysisButton;
         private System.Windows.Forms.TextBox gageLocationTextBox;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openSearchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dataAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

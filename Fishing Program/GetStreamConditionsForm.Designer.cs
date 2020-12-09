@@ -70,6 +70,7 @@ namespace Fishing_Program
             // 
             // gageLocationComboBox
             // 
+            this.gageLocationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gageLocationComboBox.FormattingEnabled = true;
             this.gageLocationComboBox.Location = new System.Drawing.Point(128, 32);
             this.gageLocationComboBox.Name = "gageLocationComboBox";

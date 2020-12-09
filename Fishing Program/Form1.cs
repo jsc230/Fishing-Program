@@ -35,6 +35,9 @@ namespace Fishing_Program
         string gageHeight;
         string moonPhase;
         string location;
+        string gageLocation;
+
+        bool inputValidated;
 
         public Form1()
         {
@@ -89,16 +92,50 @@ namespace Fishing_Program
             gageHeight = gageHeightTextBox.Text;
             time = dateTimePickerTime.Value.ToString("HH:mm");
             location = this.locationComboBox.GetItemText(this.locationComboBox.SelectedItem);
+            gageLocation = gageLocationTextBox.Text;
 
+            inputValidated = validateInput();
 
-            using (StreamWriter sw = File.AppendText("fishdata.data"))
+            if (inputValidated)
             {
-                sw.WriteLine(date + "," + time + "," + weather + "," + temperature + "," + barometer + "," + moonPhase + "," + waterClarity + "," + waterTemperature + "," + waterFlow + "," + gageHeight + "," + fishType + "," + fishLength + "," + location);
+                using (StreamWriter sw = File.AppendText("fishdata.data"))
+                {
+                    sw.WriteLine(date + "," + time + "," + weather + "," + temperature + "," + barometer + "," + moonPhase + "," + waterClarity + "," + waterTemperature + "," + waterFlow + "," + gageHeight + "," + fishType + "," + fishLength + "," + location + "," + gageLocation);
+                }
+                MessageBox.Show("Recorded");
+            }
+            else
+            {
+                MessageBox.Show("Error in input data.", "Error!");
+            }
+           
+
+        }    
+        
+        private bool validateInput()
+        {
+            if(this.weatherComboBox.SelectedIndex == -1 || this.waterClarityComboBox.SelectedIndex == -1 || this.fishTypeComboBox.SelectedIndex == -1 || this.moonPhaseComboBox.SelectedIndex == -1 || this.locationComboBox.SelectedIndex == -1)
+            {
+                return false;
             }
 
-            MessageBox.Show("Recorded");
+            try
+            {
+                int.Parse(temperature);
+                double.Parse(fishLength);
+                double.Parse(barometer);
+                int.Parse(waterTemperature);
+                double.Parse(waterFlow);
+                double.Parse(gageHeight);
+            }
+            catch
+            {
+                return false;
+            }
 
-        }       
+            return true;
+            
+        }
 
         private void openSearchbutton_Click(object sender, EventArgs e)
         {
@@ -124,5 +161,31 @@ namespace Fishing_Program
             daf.ShowDialog();
         }
 
+        private void openSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchForm sf = new SearchForm();
+            sf.ShowDialog();
+        }
+
+        private void dataAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataAnalysisForm daf = new DataAnalysisForm();
+            daf.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+                DialogResult result = MessageBox.Show("Do you really want to exit?", "Exit", MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                   
+                }
+           
+        }
     }
 }

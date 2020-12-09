@@ -36,6 +36,7 @@ namespace Fishing_Program
             this.fishTypeComboBox = new System.Windows.Forms.ComboBox();
             this.dataTypesComboBox = new System.Windows.Forms.ComboBox();
             this.analyzeButton = new System.Windows.Forms.Button();
+            this.alternateDataComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,35 +46,38 @@ namespace Fishing_Program
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(72, 48);
+            this.chart1.Location = new System.Drawing.Point(16, 16);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(648, 296);
+            this.chart1.Size = new System.Drawing.Size(944, 456);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // fishTypeComboBox
             // 
+            this.fishTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fishTypeComboBox.FormattingEnabled = true;
-            this.fishTypeComboBox.Location = new System.Drawing.Point(112, 368);
+            this.fishTypeComboBox.Location = new System.Drawing.Point(160, 504);
             this.fishTypeComboBox.Name = "fishTypeComboBox";
             this.fishTypeComboBox.Size = new System.Drawing.Size(144, 21);
             this.fishTypeComboBox.TabIndex = 1;
             // 
             // dataTypesComboBox
             // 
+            this.dataTypesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dataTypesComboBox.FormattingEnabled = true;
-            this.dataTypesComboBox.Location = new System.Drawing.Point(368, 368);
+            this.dataTypesComboBox.Location = new System.Drawing.Point(416, 504);
             this.dataTypesComboBox.Name = "dataTypesComboBox";
             this.dataTypesComboBox.Size = new System.Drawing.Size(136, 21);
             this.dataTypesComboBox.TabIndex = 2;
+            this.dataTypesComboBox.SelectedIndexChanged += new System.EventHandler(this.dataTypesComboBox_SelectedIndexChanged);
             // 
             // analyzeButton
             // 
-            this.analyzeButton.Location = new System.Drawing.Point(584, 368);
+            this.analyzeButton.Location = new System.Drawing.Point(632, 504);
             this.analyzeButton.Name = "analyzeButton";
             this.analyzeButton.Size = new System.Drawing.Size(128, 32);
             this.analyzeButton.TabIndex = 3;
@@ -81,11 +85,22 @@ namespace Fishing_Program
             this.analyzeButton.UseVisualStyleBackColor = true;
             this.analyzeButton.Click += new System.EventHandler(this.analyzeButton_Click);
             // 
+            // alternateDataComboBox
+            // 
+            this.alternateDataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.alternateDataComboBox.FormattingEnabled = true;
+            this.alternateDataComboBox.Location = new System.Drawing.Point(416, 544);
+            this.alternateDataComboBox.Name = "alternateDataComboBox";
+            this.alternateDataComboBox.Size = new System.Drawing.Size(136, 21);
+            this.alternateDataComboBox.TabIndex = 4;
+            this.alternateDataComboBox.Visible = false;
+            // 
             // DataAnalysisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(983, 598);
+            this.Controls.Add(this.alternateDataComboBox);
             this.Controls.Add(this.analyzeButton);
             this.Controls.Add(this.dataTypesComboBox);
             this.Controls.Add(this.fishTypeComboBox);
@@ -105,5 +120,6 @@ namespace Fishing_Program
         private System.Windows.Forms.ComboBox fishTypeComboBox;
         private System.Windows.Forms.ComboBox dataTypesComboBox;
         private System.Windows.Forms.Button analyzeButton;
+        private System.Windows.Forms.ComboBox alternateDataComboBox;
     }
 }

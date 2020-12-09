@@ -47,6 +47,7 @@
             // 
             // fishTypeSearchComboBox
             // 
+            this.fishTypeSearchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fishTypeSearchComboBox.FormattingEnabled = true;
             this.fishTypeSearchComboBox.Location = new System.Drawing.Point(242, 104);
             this.fishTypeSearchComboBox.Name = "fishTypeSearchComboBox";

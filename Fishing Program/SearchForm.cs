@@ -79,7 +79,8 @@ namespace Fishing_Program
                 gageHeight = parts[9],
                 fishType = parts[10],
                 length = parts[11],
-                location = parts[12]
+                location = parts[12],
+                gageLocation = parts[13]
             };
         }
 
@@ -92,11 +93,11 @@ namespace Fishing_Program
 
             using (StreamWriter sw = File.AppendText(efnf.CSVName + ".csv"))
             {
-                sw.WriteLine("Date" + "," + "Time" + "," + "Weather" + "," + "Temperature" + "," + "Barometer" + "," + "Moon Phase" + "," + "Water Clarity" + "," + "Water Temperature" + "," + "Water Flow" + "," + "Gage Height" + "," + "Fish Type" + "," + "Length" + "," + "Location");
+                sw.WriteLine("Date" + "," + "Time" + "," + "Weather" + "," + "Temperature" + "," + "Barometer" + "," + "Moon Phase" + "," + "Water Clarity" + "," + "Water Temperature" + "," + "Water Flow" + "," + "Gage Height" + "," + "Fish Type" + "," + "Length" + "," + "Location" + "," + "Gage Location");
 
                 for(int i = 0; i < fishSearchResultList.Count; i++)
                 {
-                    sw.WriteLine(fishSearchResultList[i].date + "," + fishSearchResultList[i].time + "," + fishSearchResultList[i].weather + "," + fishSearchResultList[i].temperature + "," + fishSearchResultList[i].barometer + "," + fishSearchResultList[i].moonPhase + "," + fishSearchResultList[i].waterClarity + "," + fishSearchResultList[i].waterTemperature + "," + fishSearchResultList[i].waterFlow + "," + fishSearchResultList[i].gageHeight + "," + fishSearchResultList[i].fishType + "," + fishSearchResultList[i].length + "," + fishSearchResultList[i].location);
+                    sw.WriteLine(fishSearchResultList[i].date + "," + fishSearchResultList[i].time + "," + fishSearchResultList[i].weather + "," + fishSearchResultList[i].temperature + "," + fishSearchResultList[i].barometer + "," + fishSearchResultList[i].moonPhase + "," + fishSearchResultList[i].waterClarity + "," + fishSearchResultList[i].waterTemperature + "," + fishSearchResultList[i].waterFlow + "," + fishSearchResultList[i].gageHeight + "," + fishSearchResultList[i].fishType + "," + fishSearchResultList[i].length + "," + fishSearchResultList[i].location + "," + fishSearchResultList[i].gageLocation);
 
                 }
             }

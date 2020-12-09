@@ -14,6 +14,7 @@ namespace Fishing_Program
     {
         List<string> fishTypesList = new List<string>();
         List<string> dataTypesList = new List<string>();
+        List<string> gageLocationsWNames = new List<string>();
         List<Fish> fishSearchResultList = new List<Fish>();
         StringBuilder searchsb = new StringBuilder();
         public DataAnalysisForm()
@@ -52,7 +53,8 @@ namespace Fishing_Program
                 gageHeight = parts[9],
                 fishType = parts[10],
                 length = parts[11],
-                location = parts[12]
+                location = parts[12],
+                gageLocation = parts[13]
             };
         }
 
@@ -104,7 +106,7 @@ namespace Fishing_Program
                     dataSet = countWaterTemperature(fishSearchResultList);
                     break;
                 case 8:
-                    //dataSet = countWaterFlow(fishSearchResultList);
+                    dataSet = countWaterFlow(fishSearchResultList);
                     break;
                 case 9:
                     break;
@@ -113,6 +115,8 @@ namespace Fishing_Program
                 case 11:
                     break;
                 case 12:
+                    break;
+                case 13:
                     break;
                 default:
                     MessageBox.Show("Select a data type.");
@@ -282,21 +286,114 @@ namespace Fishing_Program
             return results;
         }
 
-        //for now we will just take all flows
+        
         //Todo: later add combobox to select the appropriate gage for where the fish was caught
-        /*private List<(int, string)> countWaterFlow(List<Fish> fishList)
+        private List<(int, string)> countWaterFlow(List<Fish> fishList)
         {
+            var result = (0, "");
+            var results = new List<(int, string)>();
+            var flows = new List<double>();
+            var roundedFlowList = new List<int>();
+            string[] station;
+            int stationNum;
+            double flowMin;
+            double flowMax;
+            double bucketSize;
+            List<double> buckets = new List<double>();
+            int[] count = new int[20];
 
-        }*/
+            station = this.alternateDataComboBox.GetItemText(this.alternateDataComboBox.SelectedItem).Split('-');
+            stationNum = int.Parse(station[0]);
+
+            //clean out lists for new items
+            results.Clear();
+            flows.Clear();
+            buckets.Clear();
+          
+            
+            //need to find the high and low flow rates, then break it into even buckets (maybe 15 or 20)
+
+            //load flows from selected station into a list
+            for(int i = 0; i < fishList.Count; i++)
+            {
+                if(int.Parse(fishList[i].gageLocation) == stationNum)
+                {
+                    flows.Add(double.Parse(fishList[i].waterFlow));
+                }
+                
+            }
+
+            //find min and max
+            flowMax = flows.Max();
+            flowMin = flows.Min();
+
+            
+            //find bucket ranges
+
+            bucketSize = (flowMax - flowMin) / 20;
+
+            //fill in buckets list
+           
+            for(int i = 0; i < 21; i++)
+            {
+                buckets.Add(flowMin + (i * bucketSize));
+            }
+
+            //take the fish flows and put them intothe flow rate buckets
+
+            for(int i = 0; i < buckets.Count - 1; i++)
+            {
+                for(int j = 0; j < fishList.Count; j++)
+                {
+                    if((flows[j] > buckets[i]) && (flows[j] < buckets[i + 1]))
+                    {
+                        count[i]++;
+                    }
+                }
+            }
+
+            //put results into results list
+            for(int i = 0; i < count.Length; i++)
+            {
+                result = (count[i], buckets[i] + "->" + buckets[i + 1]);
+                results.Add(result);
+            }
+
+            return results;
+        }
 
         private void fillChart(List<(int, string)> dataSet)
         {
             chart1.Series["Series"].Points.Clear();
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
             for (int i = 0; i < dataSet.Count; i++)
             {
                 chart1.Series["Series"].Points.AddXY(dataSet[i].Item2, dataSet[i].Item1);
             }
             
+        }
+
+        private void dataTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //make sure combobox is clear
+            alternateDataComboBox.Items.Clear();
+
+            if(dataTypesComboBox.SelectedIndex == 8)
+            {
+                alternateDataComboBox.Visible = true;
+
+                gageLocationsWNames = Utility.getListData("gages.txt");
+
+                //fill alternate data combo box
+                for (int i = 0; i < gageLocationsWNames.Count; i++)
+                {
+                    alternateDataComboBox.Items.Add(gageLocationsWNames[i]);
+                }
+            }
+            else
+            {
+                alternateDataComboBox.Visible = false;
+            }
         }
     }
 }
