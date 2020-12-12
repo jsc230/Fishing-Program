@@ -68,6 +68,7 @@
             this.openSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToDataTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -420,6 +421,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openSearchToolStripMenuItem,
+            this.addToDataTypesToolStripMenuItem,
             this.dataAnalysisToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -437,7 +439,7 @@
             // 
             this.dataAnalysisToolStripMenuItem.Name = "dataAnalysisToolStripMenuItem";
             this.dataAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dataAnalysisToolStripMenuItem.Text = "&Data Analysis";
+            this.dataAnalysisToolStripMenuItem.Text = "&Data Analysis...";
             this.dataAnalysisToolStripMenuItem.Click += new System.EventHandler(this.dataAnalysisToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
@@ -446,6 +448,13 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // addToDataTypesToolStripMenuItem
+            // 
+            this.addToDataTypesToolStripMenuItem.Name = "addToDataTypesToolStripMenuItem";
+            this.addToDataTypesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToDataTypesToolStripMenuItem.Text = "&Add To DataTypes...";
+            this.addToDataTypesToolStripMenuItem.Click += new System.EventHandler(this.addToDataTypesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -463,6 +472,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -522,6 +532,7 @@
         private System.Windows.Forms.ToolStripMenuItem openSearchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToDataTypesToolStripMenuItem;
     }
 }
 

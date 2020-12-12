@@ -105,8 +105,11 @@ namespace Fishing_Program
             this.Controls.Add(this.dataTypesComboBox);
             this.Controls.Add(this.fishTypeComboBox);
             this.Controls.Add(this.chart1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(999, 637);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(999, 637);
             this.Name = "DataAnalysisForm";
             this.Text = "Data Analysis";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

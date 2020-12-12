@@ -122,6 +122,7 @@ namespace Fishing_Program
             this.Controls.Add(this.label1);
             this.Controls.Add(this.applyAndCloseButton);
             this.Controls.Add(this.getConditionsButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GetStreamConditionsForm";

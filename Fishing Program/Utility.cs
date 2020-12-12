@@ -33,6 +33,40 @@ namespace Fishing_Program
             }
 
             return dataList;
+        }
+
+        public static void Alphabetize(string dataFile)
+        {
+            List<string> fileLines = new List<string>();
+            string line;
+
+            try
+            {
+                System.IO.StreamReader file = new System.IO.StreamReader(dataFile);
+
+                while((line = file.ReadLine()) != null)
+                {
+                    fileLines.Add(line);
+                }
+                file.Close();
+            }
+            catch(Exception e)
+            {
+                string message = dataFile + " is empty.";
+                string caption = "File empty";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons);
+            }
+
+            fileLines.Sort();
+
+            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(dataFile))
+            {
+                foreach(string l in fileLines)
+                {
+                    sw.WriteLine(l);
+                }
+            }
 
         }
 

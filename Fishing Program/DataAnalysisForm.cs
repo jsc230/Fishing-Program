@@ -95,6 +95,7 @@ namespace Fishing_Program
                     dataSet = countTemperature(fishSearchResultList);
                     break;
                 case 4:
+                    dataSet = countBarometer(fishSearchResultList);
                     break;
                 case 5:
                     dataSet = countMoonPhases(fishSearchResultList);
@@ -109,6 +110,7 @@ namespace Fishing_Program
                     dataSet = countWaterFlow(fishSearchResultList);
                     break;
                 case 9:
+                    dataSet = countGageHeight(fishSearchResultList);
                     break;
                 case 10:
                     break;
@@ -286,14 +288,70 @@ namespace Fishing_Program
             return results;
         }
 
-        
-        //Todo: later add combobox to select the appropriate gage for where the fish was caught
+        private List<(int, string)> countBarometer(List<Fish> fishList)
+        {
+            var result = (0, "");
+            var results = new List<(int, string)>();
+            var barometer = new List<double>();
+            double barometerMin;
+            double barometerMax;
+            double bucketSize;
+            List<double> buckets = new List<double>();
+            int[] count = new int[20];
+
+            //clean out lists
+            results.Clear();
+            barometer.Clear();
+            buckets.Clear();
+
+            //load barometers into list
+            for(int i = 0; i < fishList.Count; i++)
+            {
+                barometer.Add(double.Parse(fishList[i].barometer));
+            }
+
+            //get min and max
+            barometerMax = barometer.Max();
+            barometerMin = barometer.Min();
+
+            //find bucket sizes
+            bucketSize = (barometerMax - barometerMin) / 20;
+
+            //fill in bucket list
+            for(int i = 0; i < 21; i++)
+            {
+                buckets.Add(barometerMin + (i * bucketSize));
+            }
+
+            //take the barometers and put them into the buckets
+            for (int i = 0; i < buckets.Count - 1; i++)
+            {
+                for (int j = 0; j < barometer.Count; j++)
+                {
+                    if ((barometer[j] > buckets[i]) && (barometer[j] <= buckets[i + 1]))
+                    {
+                        count[i]++;
+                    }
+                }
+            }
+
+            //put results into results list
+            for (int i = 0; i < count.Length; i++)
+            {
+                result = (count[i], buckets[i] + "->" + buckets[i + 1]);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+                
         private List<(int, string)> countWaterFlow(List<Fish> fishList)
         {
             var result = (0, "");
             var results = new List<(int, string)>();
             var flows = new List<double>();
-            var roundedFlowList = new List<int>();
+            //var roundedFlowList = new List<int>();
             string[] station;
             int stationNum;
             double flowMin;
@@ -343,9 +401,76 @@ namespace Fishing_Program
 
             for(int i = 0; i < buckets.Count - 1; i++)
             {
-                for(int j = 0; j < fishList.Count; j++)
+                for(int j = 0; j < flows.Count; j++)
                 {
-                    if((flows[j] > buckets[i]) && (flows[j] < buckets[i + 1]))
+                    if((flows[j] > buckets[i]) && (flows[j] <= buckets[i + 1]))
+                    {
+                        count[i]++;
+                    }
+                }
+            }
+
+            //put results into results list
+            for(int i = 0; i < count.Length; i++)
+            {
+                result = (count[i], buckets[i] + "->" + buckets[i + 1]);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+        private List<(int, string)> countGageHeight(List<Fish> fishList)
+        {
+
+            var result = (0, "");
+            var results = new List<(int, string)>();
+            var gages = new List<double>();
+            //var roundedGageList = new List<int>();
+            string[] station;
+            int stationNum;
+            double gageMin;
+            double gageMax;
+            double bucketSize;
+            List<double> buckets = new List<double>();
+            int[] count = new int[20];
+
+            station = this.alternateDataComboBox.GetItemText(this.alternateDataComboBox.SelectedItem).Split('-');
+            stationNum = int.Parse(station[0]);
+
+            //clean out lists for new items
+            results.Clear();
+            gages.Clear();
+            buckets.Clear();
+
+            //load gages from selected station into a list
+            for(int i = 0; i < fishList.Count; i++)
+            {
+                if(int.Parse(fishList[i].gageLocation) == stationNum)
+                {
+                    gages.Add(double.Parse(fishList[i].gageHeight));
+                }
+            }
+
+            //find min and max
+            gageMin = gages.Min();
+            gageMax = gages.Max();
+
+            //find bucket ranges
+            bucketSize = (gageMax - gageMin) / 20;
+
+            //fill in buckets List
+            for(int i = 0; i < 21; i++)
+            {
+                buckets.Add(gageMin + (i * bucketSize));
+            }
+
+            //take the fish gage height and put them into the gage height bckets
+            for(int i = 0; i < buckets.Count - 1; i++)
+            {
+                for(int j = 0; j < gages.Count; j++)
+                {
+                    if((gages[j] > buckets[i]) && (gages[j] <= buckets[i + 1]))
                     {
                         count[i]++;
                     }
@@ -378,7 +503,7 @@ namespace Fishing_Program
             //make sure combobox is clear
             alternateDataComboBox.Items.Clear();
 
-            if(dataTypesComboBox.SelectedIndex == 8)
+            if(dataTypesComboBox.SelectedIndex == 8 || dataTypesComboBox.SelectedIndex == 9)
             {
                 alternateDataComboBox.Visible = true;
 

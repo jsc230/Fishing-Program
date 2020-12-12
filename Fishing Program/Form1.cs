@@ -187,5 +187,11 @@ namespace Fishing_Program
                 }
            
         }
+
+        private void addToDataTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddDataForm adf = new AddDataForm();
+            adf.ShowDialog();
+        }
     }
 }
