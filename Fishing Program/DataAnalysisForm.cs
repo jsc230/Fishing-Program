@@ -54,7 +54,8 @@ namespace Fishing_Program
                 fishType = parts[10],
                 length = parts[11],
                 location = parts[12],
-                gageLocation = parts[13]
+                gageLocation = parts[13],
+                photoName = parts[14]
             };
         }
 
@@ -87,6 +88,7 @@ namespace Fishing_Program
                 case 0:
                     break;
                 case 1:
+                    dataSet = countTime(fishSearchResultList);
                     break;
                 case 2:
                     dataSet = countWeather(fishSearchResultList);
@@ -113,6 +115,7 @@ namespace Fishing_Program
                     dataSet = countGageHeight(fishSearchResultList);
                     break;
                 case 10:
+                    MessageBox.Show("You can not graph fish to fish!", "Idiot!", MessageBoxButtons.OK);
                     break;
                 case 11:
                     break;
@@ -481,6 +484,51 @@ namespace Fishing_Program
             for(int i = 0; i < count.Length; i++)
             {
                 result = (count[i], buckets[i] + "->" + buckets[i + 1]);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+        private List<(int, string)> countTime(List<Fish> fishList)
+        {
+            var timeList = new List<int>();
+            var fishTimeList = new List<int>();
+            int[] count = new int[24];
+            var result = (0, "");
+            var results = new List<(int, string)>();
+
+            //take time and turn itinto minutes
+            for(int i = 0; i <= 24; i++)
+            {
+                timeList.Add(i * 60);                
+            }
+
+            //take each fish get the time turn it into minutes, load it into a list
+            for (int i = 0; i < fishList.Count; i++)
+            {
+                string[] fishTime;
+                int time;
+
+                fishTime = fishList[i].time.Split(':');
+                time = (int.Parse(fishTime[0]) * 60) + int.Parse(fishTime[1]);
+                fishTimeList.Add(time);                
+            }
+
+            for(int i = 0; i < fishTimeList.Count; i++)
+            {
+                for(int j = 0; j < timeList.Count - 1; j++)
+                {
+                    if(fishTimeList[i] > timeList[j] && fishTimeList[i] < timeList[j + 1])
+                    {
+                        count[j]++;
+                    }
+                }
+            }
+
+            for(int i = 0; i < count.Length; i++)
+            {
+                result = (count[i], i.ToString() + "->" + (i + 1).ToString());
                 results.Add(result);
             }
 

@@ -36,6 +36,7 @@ namespace Fishing_Program
         string moonPhase;
         string location;
         string gageLocation;
+        string photoName;
 
         bool inputValidated;
 
@@ -93,6 +94,7 @@ namespace Fishing_Program
             time = dateTimePickerTime.Value.ToString("HH:mm");
             location = this.locationComboBox.GetItemText(this.locationComboBox.SelectedItem);
             gageLocation = gageLocationTextBox.Text;
+            photoName = photoTextBox.Text;
 
             inputValidated = validateInput();
 
@@ -100,7 +102,7 @@ namespace Fishing_Program
             {
                 using (StreamWriter sw = File.AppendText("fishdata.data"))
                 {
-                    sw.WriteLine(date + "," + time + "," + weather + "," + temperature + "," + barometer + "," + moonPhase + "," + waterClarity + "," + waterTemperature + "," + waterFlow + "," + gageHeight + "," + fishType + "," + fishLength + "," + location + "," + gageLocation);
+                    sw.WriteLine(date + "," + time + "," + weather + "," + temperature + "," + barometer + "," + moonPhase + "," + waterClarity + "," + waterTemperature + "," + waterFlow + "," + gageHeight + "," + fishType + "," + fishLength + "," + location + "," + gageLocation + "," + photoName);
                 }
                 MessageBox.Show("Recorded");
             }
@@ -192,6 +194,17 @@ namespace Fishing_Program
         {
             AddDataForm adf = new AddDataForm();
             adf.ShowDialog();
+        }
+
+        private void includePhotoButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if(open.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.File.Copy(open.FileName, @"photos\" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".jpg");
+                photoTextBox.Text = @"photos\" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".jpg";
+            }
         }
     }
 }

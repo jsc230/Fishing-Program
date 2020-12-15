@@ -57,6 +57,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.getCurrentStreamConditionsButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.photoTextBox = new System.Windows.Forms.TextBox();
+            this.includePhotoButton = new System.Windows.Forms.Button();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,9 +68,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToDataTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToDataTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -337,6 +339,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.photoTextBox);
+            this.groupBox3.Controls.Add(this.includePhotoButton);
             this.groupBox3.Controls.Add(this.locationComboBox);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.lengthTextBox);
@@ -350,13 +354,30 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fish Data";
             // 
+            // photoTextBox
+            // 
+            this.photoTextBox.Location = new System.Drawing.Point(448, 80);
+            this.photoTextBox.Name = "photoTextBox";
+            this.photoTextBox.Size = new System.Drawing.Size(144, 20);
+            this.photoTextBox.TabIndex = 28;
+            // 
+            // includePhotoButton
+            // 
+            this.includePhotoButton.Location = new System.Drawing.Point(304, 72);
+            this.includePhotoButton.Name = "includePhotoButton";
+            this.includePhotoButton.Size = new System.Drawing.Size(128, 40);
+            this.includePhotoButton.TabIndex = 12;
+            this.includePhotoButton.Text = "Include Photo";
+            this.includePhotoButton.UseVisualStyleBackColor = true;
+            this.includePhotoButton.Click += new System.EventHandler(this.includePhotoButton_Click);
+            // 
             // locationComboBox
             // 
             this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(405, 33);
+            this.locationComboBox.Location = new System.Drawing.Point(408, 33);
             this.locationComboBox.Name = "locationComboBox";
-            this.locationComboBox.Size = new System.Drawing.Size(131, 21);
+            this.locationComboBox.Size = new System.Drawing.Size(128, 21);
             this.locationComboBox.TabIndex = 11;
             // 
             // label13
@@ -431,30 +452,30 @@
             // openSearchToolStripMenuItem
             // 
             this.openSearchToolStripMenuItem.Name = "openSearchToolStripMenuItem";
-            this.openSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openSearchToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.openSearchToolStripMenuItem.Text = "&Open Search";
             this.openSearchToolStripMenuItem.Click += new System.EventHandler(this.openSearchToolStripMenuItem_Click);
+            // 
+            // addToDataTypesToolStripMenuItem
+            // 
+            this.addToDataTypesToolStripMenuItem.Name = "addToDataTypesToolStripMenuItem";
+            this.addToDataTypesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.addToDataTypesToolStripMenuItem.Text = "&Add To DataTypes...";
+            this.addToDataTypesToolStripMenuItem.Click += new System.EventHandler(this.addToDataTypesToolStripMenuItem_Click);
             // 
             // dataAnalysisToolStripMenuItem
             // 
             this.dataAnalysisToolStripMenuItem.Name = "dataAnalysisToolStripMenuItem";
-            this.dataAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dataAnalysisToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.dataAnalysisToolStripMenuItem.Text = "&Data Analysis...";
             this.dataAnalysisToolStripMenuItem.Click += new System.EventHandler(this.dataAnalysisToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // addToDataTypesToolStripMenuItem
-            // 
-            this.addToDataTypesToolStripMenuItem.Name = "addToDataTypesToolStripMenuItem";
-            this.addToDataTypesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addToDataTypesToolStripMenuItem.Text = "&Add To DataTypes...";
-            this.addToDataTypesToolStripMenuItem.Click += new System.EventHandler(this.addToDataTypesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -533,6 +554,8 @@
         private System.Windows.Forms.ToolStripMenuItem dataAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToDataTypesToolStripMenuItem;
+        private System.Windows.Forms.Button includePhotoButton;
+        private System.Windows.Forms.TextBox photoTextBox;
     }
 }
 

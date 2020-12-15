@@ -80,7 +80,8 @@ namespace Fishing_Program
                 fishType = parts[10],
                 length = parts[11],
                 location = parts[12],
-                gageLocation = parts[13]
+                gageLocation = parts[13],
+                photoName = parts[14]
             };
         }
 
