@@ -38,6 +38,8 @@ namespace Fishing_Program
         string gageLocation;
         string photoName;
 
+        string photoDirectory;
+
         bool inputValidated;
 
         public Form1()
@@ -94,7 +96,7 @@ namespace Fishing_Program
             time = dateTimePickerTime.Value.ToString("HH:mm");
             location = this.locationComboBox.GetItemText(this.locationComboBox.SelectedItem);
             gageLocation = gageLocationTextBox.Text;
-            photoName = photoTextBox.Text;
+            photoName = photoDirectory;
 
             inputValidated = validateInput();
 
@@ -202,9 +204,16 @@ namespace Fishing_Program
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             if(open.ShowDialog() == DialogResult.OK)
             {
-                System.IO.File.Copy(open.FileName, @"photos\" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".jpg");
-                photoTextBox.Text = @"photos\" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".jpg";
+                string time = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+                System.IO.File.Copy(open.FileName, @"photos\" + time + ".jpg");
+                photoDirectory = @"\\photos\" + time + ".jpg";
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm ab = new AboutForm();
+            ab.ShowDialog();
         }
     }
 }

@@ -54,12 +54,13 @@ namespace Fishing_Program
 
             for (int i = 0; i < fishSearchResultList.Count; i++)
             {
-                Console.WriteLine(fishSearchResultList[i].barometer + " " + fishSearchResultList[i].fishType);
+                //Console.WriteLine(fishSearchResultList[i].barometer + " " + fishSearchResultList[i].fishType);
 
-                searchsb.AppendLine(fishSearchResultList[i].barometer + " " + fishSearchResultList[i].fishType);
+                searchsb.AppendLine(fishSearchResultList[i].date + " " + fishSearchResultList[i].time + " " + fishSearchResultList[i].weather + " " + fishSearchResultList[i].temperature + " " + fishSearchResultList[i].barometer + " " + fishSearchResultList[i].moonPhase + " " + fishSearchResultList[i].waterClarity + " " + fishSearchResultList[i].waterTemperature + " " + fishSearchResultList[i].waterFlow + " " + fishSearchResultList[i].gageHeight + " " + fishSearchResultList[i].fishType + " " + fishSearchResultList[i].length + " " + fishSearchResultList[i].location + " " + fishSearchResultList[i].gageLocation + " " + fishSearchResultList[i].photoName);
             }
 
             searchRichTextBox.Text = searchsb.ToString();
+            file.Close();
         }
 
         private static Fish ParseFishFromLine(string line)
@@ -94,16 +95,22 @@ namespace Fishing_Program
 
             using (StreamWriter sw = File.AppendText(efnf.CSVName + ".csv"))
             {
-                sw.WriteLine("Date" + "," + "Time" + "," + "Weather" + "," + "Temperature" + "," + "Barometer" + "," + "Moon Phase" + "," + "Water Clarity" + "," + "Water Temperature" + "," + "Water Flow" + "," + "Gage Height" + "," + "Fish Type" + "," + "Length" + "," + "Location" + "," + "Gage Location");
+                sw.WriteLine("Date" + "," + "Time" + "," + "Weather" + "," + "Temperature" + "," + "Barometer" + "," + "Moon Phase" + "," + "Water Clarity" + "," + "Water Temperature" + "," + "Water Flow" + "," + "Gage Height" + "," + "Fish Type" + "," + "Length" + "," + "Location" + "," + "Gage Location" + "," + "Photo");
 
                 for(int i = 0; i < fishSearchResultList.Count; i++)
                 {
-                    sw.WriteLine(fishSearchResultList[i].date + "," + fishSearchResultList[i].time + "," + fishSearchResultList[i].weather + "," + fishSearchResultList[i].temperature + "," + fishSearchResultList[i].barometer + "," + fishSearchResultList[i].moonPhase + "," + fishSearchResultList[i].waterClarity + "," + fishSearchResultList[i].waterTemperature + "," + fishSearchResultList[i].waterFlow + "," + fishSearchResultList[i].gageHeight + "," + fishSearchResultList[i].fishType + "," + fishSearchResultList[i].length + "," + fishSearchResultList[i].location + "," + fishSearchResultList[i].gageLocation);
+                    sw.WriteLine(fishSearchResultList[i].date + "," + fishSearchResultList[i].time + "," + fishSearchResultList[i].weather + "," + fishSearchResultList[i].temperature + "," + fishSearchResultList[i].barometer + "," + fishSearchResultList[i].moonPhase + "," + fishSearchResultList[i].waterClarity + "," + fishSearchResultList[i].waterTemperature + "," + fishSearchResultList[i].waterFlow + "," + fishSearchResultList[i].gageHeight + "," + fishSearchResultList[i].fishType + "," + fishSearchResultList[i].length + "," + fishSearchResultList[i].location + "," + fishSearchResultList[i].gageLocation + "," + fishSearchResultList[i].photoName);
 
                 }
             }
         }
 
-        
+        private void searchRichTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            string filePath = e.LinkText;
+            string modFilePath = filePath.Remove(0, 2);
+            OpenPicture op = new OpenPicture(modFilePath);
+            op.ShowDialog();
+        }
     }
 }

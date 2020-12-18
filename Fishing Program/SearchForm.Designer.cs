@@ -49,7 +49,7 @@
             // 
             this.fishTypeSearchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fishTypeSearchComboBox.FormattingEnabled = true;
-            this.fishTypeSearchComboBox.Location = new System.Drawing.Point(242, 104);
+            this.fishTypeSearchComboBox.Location = new System.Drawing.Point(88, 104);
             this.fishTypeSearchComboBox.Name = "fishTypeSearchComboBox";
             this.fishTypeSearchComboBox.Size = new System.Drawing.Size(137, 21);
             this.fishTypeSearchComboBox.TabIndex = 1;
@@ -57,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(170, 112);
+            this.label1.Location = new System.Drawing.Point(24, 112);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 2;
@@ -65,11 +65,13 @@
             // 
             // searchRichTextBox
             // 
-            this.searchRichTextBox.Location = new System.Drawing.Point(100, 158);
+            this.searchRichTextBox.Location = new System.Drawing.Point(16, 158);
             this.searchRichTextBox.Name = "searchRichTextBox";
-            this.searchRichTextBox.Size = new System.Drawing.Size(593, 143);
+            this.searchRichTextBox.Size = new System.Drawing.Size(760, 143);
             this.searchRichTextBox.TabIndex = 3;
             this.searchRichTextBox.Text = "";
+            this.searchRichTextBox.WordWrap = false;
+            this.searchRichTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.searchRichTextBox_LinkClicked);
             // 
             // exportCSVButton
             // 

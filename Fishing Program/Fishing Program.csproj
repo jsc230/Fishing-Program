@@ -96,6 +96,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,12 @@
     <Compile Include="ExportFileNameForm.Designer.cs">
       <DependentUpon>ExportFileNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpenPicture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenPicture.Designer.cs">
+      <DependentUpon>OpenPicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +149,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDataForm.resx">
       <DependentUpon>AddDataForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GetStreamConditionsForm.resx">
       <DependentUpon>GetStreamConditionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenPicture.resx">
+      <DependentUpon>OpenPicture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

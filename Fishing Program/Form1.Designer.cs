@@ -57,7 +57,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.getCurrentStreamConditionsButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.photoTextBox = new System.Windows.Forms.TextBox();
             this.includePhotoButton = new System.Windows.Forms.Button();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@
             this.addToDataTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -339,7 +339,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.photoTextBox);
             this.groupBox3.Controls.Add(this.includePhotoButton);
             this.groupBox3.Controls.Add(this.locationComboBox);
             this.groupBox3.Controls.Add(this.label13);
@@ -354,16 +353,9 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fish Data";
             // 
-            // photoTextBox
-            // 
-            this.photoTextBox.Location = new System.Drawing.Point(448, 80);
-            this.photoTextBox.Name = "photoTextBox";
-            this.photoTextBox.Size = new System.Drawing.Size(144, 20);
-            this.photoTextBox.TabIndex = 28;
-            // 
             // includePhotoButton
             // 
-            this.includePhotoButton.Location = new System.Drawing.Point(304, 72);
+            this.includePhotoButton.Location = new System.Drawing.Point(376, 72);
             this.includePhotoButton.Name = "includePhotoButton";
             this.includePhotoButton.Size = new System.Drawing.Size(128, 40);
             this.includePhotoButton.TabIndex = 12;
@@ -431,7 +423,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(719, 24);
@@ -476,6 +469,13 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -555,7 +555,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToDataTypesToolStripMenuItem;
         private System.Windows.Forms.Button includePhotoButton;
-        private System.Windows.Forms.TextBox photoTextBox;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
